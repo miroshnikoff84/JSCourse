@@ -1,18 +1,30 @@
-var money = 90000;
-var income = 'freelance';
-let addExpenses = 'Internet, Taxi, Costs';
-var deposit = true;
-var mission = '5000000';
-var period = '11';
+var num = 266219;
+var arr = [];
+var arr2 = [];
+for (var temp = num;
+         Math.round(temp) != 0;
+         temp /= 10, temp = Math.floor(temp)){
 
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
-console.log(addExpenses.length);
-console.log('Период равен ' + period + ' месяцев');
-console.log('Цель заработать ' + mission + ' долларов');
-console.log(addExpenses.toLowerCase());
-console.log(addExpenses.split(', '));
+         arr.unshift(temp%10);
+}
 
-var budgetDay = money / 30;
-console.log(budgetDay); 
+var total = arr.reduceRight(function(a, b) {
+  return a * b;
+});
+
+console.log(total);
+var pow = total ** 3; 
+
+console.log(pow);
+
+for (var temp = pow;
+         Math.round(temp) != 0;
+         temp /= 10, temp = Math.floor(temp)){
+
+         arr2.unshift(temp%10);
+}
+console.log(arr2);
+for (let i = 0; i < 2; i++){
+  
+  console.log(arr2[i]);
+}
