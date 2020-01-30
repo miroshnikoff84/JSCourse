@@ -1,13 +1,13 @@
 'use strict';
-alert('hello');
-console.log('hello');
+// alert();
+// console.log();
 
 // let money = 6000000;                    //Доход за месяц
 let income = 45324;                        //Дополнительный доход за месяц
 // const addExpenses = 798;                //Дополнительные расходы
 // let deposit = true;                     //Наличие депозита
 // const mission = 120000000;              //Сумма которую нужно накопить
-let period = 31;                           //Период   
+// let period = 31;                           //Период   
 
 // var num = 266219;
 // var arr = [];
@@ -42,19 +42,20 @@ let period = 31;                           //Период
 
 
 
-let money = prompt('Ваш ежемесячный доход?');
-console.log(money);
+let money = +prompt('Ваш ежемесячный доход?');
+console.log('Ежемесячный доход:' + money);
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 let deposit = confirm('Есть ли у вас депозит в банке?');
 let expenses1 = prompt('Введите обязательную статью расходов');
-let amount1 = prompt('Во сколько это обойдется?');
+let amount1 = +prompt('Во сколько это обойдется?');
 let expenses2 = prompt('Введите обязательную статью расходов');
-let amount2 = prompt('Во сколько это обойдется?');
-let budgetMount = (amount1 + amount2 + addExpenses);
-console.log(budgetMount);
-let mission = prompt('Ваша цель заработать');
-console.log(mission / ((money + income) - (expenses1 + expenses2 + addExpenses)));
-let budgetDay = (budgetMount / 31);
+let amount2 = +prompt('Во сколько это обойдется?');
+let budgetMonth=(money-amount1-amount2);
+console.log('Бюджет на месяц равен:' + budgetMonth);
+let mission = +prompt('Ваша цель заработать');
+console.log(mission/(money+income-(expenses1 + expenses2 + addExpenses)));
+let budgetDay = (budgetMonth / 31);
+console.log(budgetDay);
 if (budgetDay > 1200) {
   alert('У вас высокий уровень дохода'); 
 }
