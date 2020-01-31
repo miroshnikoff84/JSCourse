@@ -44,9 +44,8 @@ let income = 45324;                        //Дополнительный дох
 
 let money = +prompt('Ваш ежемесячный доход?');
 console.log('Ежемесячный доход: ' + money + ' рублей');
-let addExpenses = ([prompt('Перечислите возможные расходы за рассчитываемый период через запятую')]);
-
-console.log(addExpenses);
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+console.log(addExpenses.split(','));
 let deposit = confirm('Есть ли у вас депозит в банке?');
 let expenses1 = prompt('Введите обязательную статью расходов');
 let amount1 = +prompt('Во сколько это обойдется?');
@@ -75,7 +74,3 @@ if (budgetDay < 600) {
 if (budgetDay < 0) {
   alert('Что то пошло не так');
 }
-
-
-
-
