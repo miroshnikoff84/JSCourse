@@ -43,27 +43,39 @@ let income = 45324;                        //Дополнительный дох
 
 
 let money = +prompt('Ваш ежемесячный доход?');
-console.log('Ежемесячный доход:' + money);
-let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
+console.log('Ежемесячный доход: ' + money + ' рублей');
+let addExpenses = ([prompt('Перечислите возможные расходы за рассчитываемый период через запятую')]);
+
+console.log(addExpenses);
 let deposit = confirm('Есть ли у вас депозит в банке?');
 let expenses1 = prompt('Введите обязательную статью расходов');
 let amount1 = +prompt('Во сколько это обойдется?');
 let expenses2 = prompt('Введите обязательную статью расходов');
 let amount2 = +prompt('Во сколько это обойдется?');
 let budgetMonth=(money-amount1-amount2);
-console.log('Бюджет на месяц равен:' + budgetMonth);
+console.log('Бюджет на месяц равен: ' + budgetMonth + ' рублей');
 let mission = +prompt('Ваша цель заработать');
-console.log(mission/(money+income-(expenses1 + expenses2 + addExpenses)));
-let budgetDay = (budgetMonth / 31);
-console.log(budgetDay);
-if (budgetDay > 1200) {
+let period = Math.ceil(mission / budgetMonth);
+console.log('Цель будет достигнута через ' + period + ' мес.');
+let budgetDay = Math.ceil(budgetMonth / 30);
+console.log('Ваш бюджет на день ' + budgetDay + ' рублей');
+
+if (budgetDay >= 1200) {
   alert('У вас высокий уровень дохода'); 
 }
 
-if (budgetDay > 600) {
+if (1200 > budgetDay >= 600) {
   alert('У вас средний уровень дохода');
+}
+
+if (budgetDay < 600) {
+  alert('К сожалению у вас уровень дохода ниже среднего');
 }
 
 if (budgetDay < 0) {
   alert('Что то пошло не так');
 }
+
+
+
+
