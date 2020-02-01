@@ -6,7 +6,6 @@ let money = +prompt('Ваш ежемесячный доход?'),               
     deposit = confirm('Есть ли у вас депозит в банке?'),                                                                                               //Наличие депозита
     mission =+prompt('Ваша цель заработать');
 
-
 let showTypeOf = function(data) {
 console.log(data, typeof(data));
 };
