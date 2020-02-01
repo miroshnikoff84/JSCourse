@@ -49,7 +49,6 @@ function getTargetMonth(a, b) {
 }
 console.log('Цель будет достигнута через ' + getTargetMonth(mission, accumulatedMonth) + 'мес.');
 
-
 let getStatusIncome = function() {
   if (budgetDay >= 1200) {
   return('У вас высокий уровень дохода'); 
