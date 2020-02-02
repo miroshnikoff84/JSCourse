@@ -81,20 +81,20 @@ else {
   console.log('Цель не будет достигнута');
 }
 
-let getStatusIncome = function() {
-  if (budgetDay >= 1200) {
+let getStatusIncome = function () {
+  if (budgetDay > 1200) {
   return('У вас высокий уровень дохода'); 
   }
 
-  if (1200 > budgetDay >= 600) {
+  if (budgetDay > 600 && budgetDay < 1199) {
   return('У вас средний уровень дохода');
   }
 
-  if (budgetDay < 600) {
+  if (budgetDay < 599 && budgetDay > 0) {
   return ('К сожалению у вас уровень дохода ниже среднего');
   }
 
-  if (budgetDay < 0) {
+  if (0 > budgetDay) {
   return('Что то пошло не так');
   }
 };
