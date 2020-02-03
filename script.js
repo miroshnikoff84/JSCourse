@@ -89,8 +89,6 @@ let appData = {
   calcSavedMoney: function () {
     return appData.budgetMonth * appData.period;
   }
-  
-
 
 };
 
@@ -105,4 +103,4 @@ let appData = {
       
 }
 appData.getInfoDeposit();
-console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney);
+console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
