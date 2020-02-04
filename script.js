@@ -44,11 +44,12 @@ let appData = {
           appData.cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 20000);
         } while (!isNumber(appData.cashIncome));
 
-      appData.income[appData.itemIncome] = appData.cashIncome;
+        appData.income[appData.itemIncome] = appData.cashIncome;
     }
 
-      appData.addExpenses = prompt('Перечислите возможные расходы', 'мммиии,fhfhhhh,kjhkhl'); 
-    appData.addExpenses.toLowerCase().split(',') 
+       appData.addExpenses = prompt('Перечислите возможные расходы', 'мммиDFии,fhfhRFhhh,kjhkDFhl'); 
+      console.log(appData.addExpenses);
+    appData.addExpenses = appData.addExpenses.toLowerCase().split(',') 
     appData.deposit = confirm('Есть ли у вас депозит в банке?') 
     for (let i = 0; i < 2; i++) {
       do {
@@ -118,4 +119,9 @@ let appData = {
 }
 appData.getInfoDeposit();
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
-console.log(appData.addExpenses.replace(/(?:^|[^\p{L}])(\p{L})/ug, m => m.toUpperCase()));
+
+appData.addExpenses = appData.addExpenses.map(function(item){
+  return item.charAt(0).toUpperCase() + item.slice(1)
+}).join(', ')
+
+console.log(appData.addExpenses);

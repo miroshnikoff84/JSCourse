@@ -1,12 +1,7 @@
 'use strict'
 
-let isNumber = function (n) { 
-return !isNaN(parseFloat(n)) && isFinite(n) 
-};
+let arr = ['one', 'two', 'three'];
 
-let expenses;
-do {
- expenses = prompt('Введите строку!');
-}
-while (isNumber(expenses));
-console.log(typeof expenses);
+arr = arr.map(item => item.toUpperCase())
+
+console.log(arr);
