@@ -38,7 +38,7 @@ let appData = {
       if (confirm('Есть ли у вас дополнительный источник заработка?')) {
         do {
           appData.itemIncome = prompt('Какой у вас дополнительный зароботок?', 'такси');
-        } while (isNumber(appData.itemIncome));
+        } while (isNumber(appData.itemIncome) || appData.itemIncome === '' || appData.itemIncome === null);
 
         do {
           appData.cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 20000);
@@ -55,7 +55,7 @@ let appData = {
     for (let i = 0; i < 2; i++) {
       do {
         appData.title = prompt('Введите обязательную статью расходов');
-      }while(isNumber(appData.title));
+      }while(isNumber(appData.title) || appData.title === '' || appData.title === null);
       appData.expenses[appData.title] = prompt('Восколько это обойдется?');
       
     }
@@ -121,21 +121,17 @@ let appData = {
 appData.getInfoDeposit();
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
 
-appData.addExpenses = appData.addExpenses.map(function(item){
-  return item.charAt(0).toUpperCase() + item.slice(1)
-}).join(', ')
-
 console.log(appData.addExpenses);
 
 let btnCalc = document.getElementById('start');
 let btnAddIncom = document.getElementsByTagName('button')[0];
 let btnAddExpenses = document.getElementsByTagName('button')[1];
 let checkbox = document.querySelector('#deposit-check');
-let additIncomeItem = document.querySelectorAll('.additional_income-item');
-let budgetDayValue = document.getElementsByClassName('budget_day-value');
-let expensesMonthValue = document.getElementsByClassName('expenses_month-value');
-let additionalIncomeValue = document.getElementsByClassName('additional_income-value');
-let additionalExpensesValue = document.getElementsByClassName('additional_expenses-value');
-let incomPeriodValue = document.getElementsByClassName('income_period-value');
-let targetMonthValue = document.getElementsByClassName('target_month-value');
+let additIncomeItem = document.querySelectorAll('.additional_income-item')[0];
+let budgetDayValue = document.getElementsByClassName('budget_day-value')[0];
+let expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0];
+let additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0];
+let additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0];
+let incomPeriodValue = document.getElementsByClassName('income_period-value')[0];
+let targetMonthValue = document.getElementsByClassName('target_month-value')[0];
 
