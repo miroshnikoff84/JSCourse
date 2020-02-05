@@ -38,7 +38,7 @@ let appData = {
       if (confirm('Есть ли у вас дополнительный источник заработка?')) {
         do {
           appData.itemIncome = prompt('Какой у вас дополнительный зароботок?', 'такси');
-        } while (isNumber(appData.itemIncome));
+        } while (isNumber(appData.itemIncome) || appData.itemIncome === '' || appData.itemIncome === null);
 
         do {
           appData.cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?', 20000);
@@ -49,12 +49,13 @@ let appData = {
 
        let addExpenses = prompt('Перечислите возможные расходы', 'мммиDFии,fhfhRFhhh,kjhkDFhl'); 
       addExpenses = addExpenses.split(',');
-      appData.addExpenses = addExpenses.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ')
+      appData.addExpenses = addExpenses.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ') 
+      
     appData.deposit = confirm('Есть ли у вас депозит в банке?') 
     for (let i = 0; i < 2; i++) {
       do {
         appData.title = prompt('Введите обязательную статью расходов');
-      }while(isNumber(appData.title));
+      }while(isNumber(appData.title) || appData.title === '' || appData.title === null);
       appData.expenses[appData.title] = prompt('Восколько это обойдется?');
       
     }
@@ -120,8 +121,7 @@ let appData = {
 appData.getInfoDeposit();
 console.log(appData.percentDeposit, appData.moneyDeposit, appData.calcSavedMoney());
 
-appData.addExpenses = appData.addExpenses.map(function(item){
-  return item.charAt(0).toUpperCase() + item.slice(1)
-}).join(', ')
-
 console.log(appData.addExpenses);
+
+
+
