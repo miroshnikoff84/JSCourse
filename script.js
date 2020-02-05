@@ -47,9 +47,10 @@ let appData = {
         appData.income[appData.itemIncome] = appData.cashIncome;
     }
 
-       appData.addExpenses = prompt('Перечислите возможные расходы', 'мммиDFии,fhfhRFhhh,kjhkDFhl'); 
-      console.log(appData.addExpenses);
-    appData.addExpenses = appData.addExpenses.toLowerCase().split(',') 
+       let addExpenses = prompt('Перечислите возможные расходы', 'мммиDFии,fhfhRFhhh,kjhkDFhl'); 
+      addExpenses = addExpenses.split(',');
+      appData.addExpenses = addExpenses.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ') 
+      
     appData.deposit = confirm('Есть ли у вас депозит в банке?') 
     for (let i = 0; i < 2; i++) {
       do {
