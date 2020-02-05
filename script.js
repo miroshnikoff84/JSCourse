@@ -125,3 +125,16 @@ appData.addExpenses = appData.addExpenses.map(function(item){
 }).join(', ')
 
 console.log(appData.addExpenses);
+
+let btnCalc = document.getElementById('start');
+let btnAddIncom = document.getElementsByTagName('button')[0];
+let btnAddExpenses = document.getElementsByTagName('button')[1];
+let checkbox = document.querySelector('#deposit-check');
+let additIncomeItem = document.querySelectorAll('.additional_income-item');
+let budgetDayValue = document.getElementsByClassName('budget_day-value');
+let expensesMonthValue = document.getElementsByClassName('expenses_month-value');
+let additionalIncomeValue = document.getElementsByClassName('additional_income-value');
+let additionalExpensesValue = document.getElementsByClassName('additional_expenses-value');
+let incomPeriodValue = document.getElementsByClassName('income_period-value');
+let targetMonthValue = document.getElementsByClassName('target_month-value');
+
