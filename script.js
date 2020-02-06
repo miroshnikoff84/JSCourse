@@ -186,8 +186,3 @@ periodSelect.addEventListener('change', function () {
 btnCalc.addEventListener('click', appData.start);
 btnAddExpenses.addEventListener('click', appData.addExpensesBlock);
 btnAddIncome.addEventListener('click', appData.addIncomeBlock);
-
-    
-
-
-
