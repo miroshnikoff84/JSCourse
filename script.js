@@ -1,17 +1,17 @@
 'use strict'; 
 
 
-let btnCalc = document.getElementById('start'),     //кнопка рассчитать
-    checkbox = document.querySelector('#deposit-check'),      //чекбокс    
-    btnAddIncome = document.getElementsByTagName('button')[0],       
-    btnAddExpenses = document.getElementsByTagName('button')[1],
-    budgetMonthValue = document.getElementsByClassName('budget_month-value')[0],
-    budgetDayValue = document.getElementsByClassName('budget_day-value')[0],
-    additionalIncomeItem = document.querySelectorAll('.additional_income-item')[0],
-    targetMonthValue = document.getElementsByClassName('target_month-value')[0],
-    incomPeriodValue = document.getElementsByClassName('income_period-value')[0],
-    expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0],
-    additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0],
+let start = document.getElementById('start'),                                                   //кнопка рассчитать
+    checkbox = document.querySelector('#deposit-check'),                                        //чекбокс    
+    btnAddIncome = document.getElementsByTagName('button')[0],                                  //кнопка добавить поле доп.расходы      
+    btnAddExpenses = document.getElementsByTagName('button')[1],                                //кнопка добавить поле обяз.расходы 
+    budgetMonthValue = document.getElementsByClassName('budget_month-value')[0],                //поле вывода дохода за месяц
+    budgetDayValue = document.getElementsByClassName('budget_day-value')[0],                    //поле вывода бюджет за месяц
+    additionalIncomeItem = document.querySelectorAll('.additional_income-item')[0],             //поля ввода возможного дохода
+    targetMonthValue = document.getElementsByClassName('target_month-value')[0],                //поле вывода срока достижения цели в месяцах
+    incomPeriodValue = document.getElementsByClassName('income_period-value')[0],               //поле вывода накопления за период
+    expensesMonthValue = document.getElementsByClassName('expenses_month-value')[0],            //поле вывода расхода за месяц
+    additionalIncomeValue = document.getElementsByClassName('additional_income-value')[0],      //поле вывода возможные доходы
     additionalExpensesValue = document.getElementsByClassName('additional_expenses-value')[0],
     expensesItems = document.querySelectorAll('.expenses-items'),
     incomeTitle = document.querySelector('.income-title'),
@@ -26,6 +26,7 @@ let btnCalc = document.getElementById('start'),     //кнопка рассчи�
 let isNumber = function (n) { 
 return !isNaN(parseFloat(n)) && isFinite(n) 
 }; 
+
 
 let money; 
       
@@ -47,11 +48,8 @@ let appData = {
     cashIncome:0,
     title:0,
   start: function () { 
-    if (salaryAmount.value === '') {
-        btnCalc.removeEventListener('click', start);
-      } else {
-        btnCalc.addEventListener('click', appData.start);
-    };
+
+      appData.blockStart();  
       appData.budget = +salaryAmount.value;
       appData.getExpenses();
       appData.getIncome();
@@ -62,6 +60,9 @@ let appData = {
 
       appData.showResult();
   
+  },
+      blockStart: function () {
+        start.disabled = !salaryAmount.value.trim();
     },
       showResult: function(){
       budgetMonthValue.value = appData.budgetMonth;
@@ -111,9 +112,7 @@ let appData = {
         for (let key in appData.income) {
             appData.incomeMonth += +appData.income[key]
         }
-        
       })
-      
     },
     getAddExpenses: function(){
       let addExpenses = additionalExpensesItem.value.split(',');
@@ -143,7 +142,7 @@ let appData = {
     appData.budgetDay = Math.ceil(appData.budgetMonth / 30);
     }, 
     getTargetMonth: function () { 
-    appData.period = Math.ceil(targetAmount.value / appData.budgetMonth) 
+      return targetAmount.value / appData.budgetMonth;
   }, 
     getStatusIncome: function () { 
     if (appData.budgetDay > 1200) { 
@@ -183,6 +182,7 @@ periodSelect.addEventListener('change', function () {
   periodAmount.innerHTML = periodSelect.value;
 }, false);
 
-btnCalc.addEventListener('click', appData.start);
+salaryAmount.addEventListener('input', appData.blockStart);
+start.addEventListener('click', appData.start);
 btnAddExpenses.addEventListener('click', appData.addExpensesBlock);
 btnAddIncome.addEventListener('click', appData.addIncomeBlock);
