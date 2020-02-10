@@ -64,6 +64,7 @@ let appData = {
     this.calcPeriod();
 
     this.showResult();
+    this.blockInput();
   
   },
   blockStart: function () {
@@ -204,6 +205,8 @@ let appData = {
   reset: function () {
     start.style.display = 'block';
     btnCancel.style.display = 'none';
+    periodSelect.value = "1";
+    periodAmount.textContent = "1";
 
     let elem = document.querySelector('.data').querySelectorAll('input[type=text]');
     elem.forEach(function (item) {
@@ -218,6 +221,12 @@ let appData = {
 
   }
 };
+
+periodSelect.addEventListener('change', function () {
+  periodAmount.innerHTML = periodSelect.value;
+}, false)
+
+
 
 salaryAmount.addEventListener('input', appData.blockStart);
 start.addEventListener('click', appData.start.bind(appData));
