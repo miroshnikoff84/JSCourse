@@ -1,7 +1,8 @@
 'use strict'; 
 
 
-let start = document.getElementById('start'),                                                   //кнопка рассчитать
+let start = document.getElementById('start'),
+    btnCancel = document.getElementById('cancel'),                                                  //кнопка рассчитать
     checkbox = document.querySelector('#deposit-check'),                                        //чекбокс    
     btnAddIncome = document.getElementsByTagName('button')[0],                                  //кнопка добавить поле доп.расходы      
     btnAddExpenses = document.getElementsByTagName('button')[1],                                //кнопка добавить поле обяз.расходы 
@@ -217,12 +218,6 @@ let appData = {
 
   }
 };
-
-// periodSelect.addEventListener('change', function () {
-//   periodAmount.innerHTML = periodSelect.value
-//   false);
-
-
 
 salaryAmount.addEventListener('input', appData.blockStart);
 start.addEventListener('click', appData.start.bind(appData));
