@@ -234,6 +234,7 @@ let appData = {
     return resultTotal.disabled = false;
   },
   reset: function () {
+    
     start.style.display = 'block';
     btnCancel.style.display = 'none';
     periodSelect.value = "1";
@@ -272,6 +273,7 @@ periodSelect.addEventListener('change', function () {
 
 
 salaryAmount.addEventListener('input', blockStart);
+btnCancel.addEventListener('click', blockStart)
 btnCancel.addEventListener('click', appData.reset.bind(appData));
 start.addEventListener('click', appData.start.bind(appData));
 btnAddExpenses.addEventListener('click', appData.addExpensesBlock);
