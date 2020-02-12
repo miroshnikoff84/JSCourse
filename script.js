@@ -29,6 +29,7 @@ let start = document.getElementById('start'),
 let isNumber = function (n) { 
     return !isNaN(parseFloat(n)) && isFinite(n); 
 }; 
+blockStart();
 
 let money; 
 
