@@ -1,11 +1,11 @@
 'use strict';
 
-
 let salaryAmount = document.querySelector('.salary-amount'),
     incomeTitle = document.querySelector('.income-title'),
     incomeItems = document.querySelectorAll('.income-items'),
     btnPlusIncome = document.getElementsByTagName('button')[0],
     addIncomeInputs = document.querySelectorAll('.additional_income-item'),
+    additionalIncomeItems = document.querySelectorAll('.additional_income-item'),
     expensesTitle = document.querySelector('.expenses-title'),
     expensesItems = document.querySelectorAll('.expenses-items'),
     btnPlusExpenses = document.getElementsByTagName('button')[1],
@@ -102,6 +102,14 @@ addExpensesBlock() {
     allInputsNaming.forEach((item) => {
         item.addEventListener('input', this.checkInputs);
     });
+
+    cancelBtn.addEventListener('click', () => {
+        cloneExpensesItem.firstElementChild.value = '';
+        cloneExpensesItem.lastElementChild.value = '';
+        cloneExpensesItem.remove();
+        btnPlusExpenses.style.display = 'block';
+        btnPlusExpenses.disabled = false;
+    });
 }
 addIncomeBlock() {
     const cloneIncome = incomeItems[0].cloneNode(true);
@@ -124,6 +132,14 @@ addIncomeBlock() {
 
     allInputsNaming.forEach((item) => {
         item.addEventListener('input', this.checkInputs);
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        cloneIncome.firstElementChild.value = '';
+        cloneIncome.lastElementChild.value = '';
+        cloneIncome.remove();
+        btnPlusIncome.style.display = 'block';
+        btnPlusIncome.disabled = false;
     });
 }
 getExpenses() {
@@ -151,22 +167,18 @@ getIncome() {
 }
 getAddExpenses() {
     let addExpenses = addExpensesItem.value.split(',');
-    addExpenses.forEach((item) => {
-        item = item.trim();
-        
-        if(item !== '') {
-            this.addExpenses.push(item);
-        }
-    });
+    addExpenses = addExpenses.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ');
+    this.addExpenses = addExpenses.split(',');
 }
 getAddIncome() {
-    addIncomeInputs.forEach((item) => {
-        let itemValue = item.value.trim();
-        
-        if(itemValue !== '') {
-            this.addIncome.push(itemValue);
+    additionalIncomeItems.forEach((item) => {
+        let itemValue = item.value.split(',');
+        itemValue = itemValue.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ');
+        itemValue = itemValue.split(',');
+        if (itemValue !== '') {
+          this.addIncome.push(itemValue);
         }
-    });
+      });
 }
 changPeriod() {
     periodAmount.textContent = periodSelect.value;
