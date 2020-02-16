@@ -5,6 +5,7 @@ let salaryAmount = document.querySelector('.salary-amount'),
     incomeItems = document.querySelectorAll('.income-items'),
     btnPlusIncome = document.getElementsByTagName('button')[0],
     addIncomeInputs = document.querySelectorAll('.additional_income-item'),
+    additionalIncomeItems = document.querySelectorAll('.additional_income-item'),
     expensesTitle = document.querySelector('.expenses-title'),
     expensesItems = document.querySelectorAll('.expenses-items'),
     btnPlusExpenses = document.getElementsByTagName('button')[1],
@@ -55,7 +56,7 @@ AppData.prototype.start = function() {
     this.getIncome();
     this.getExpensesMonth();
     this.getAddExpenses();
-    // this.getAddIncome();
+    this.getAddIncome();
     this.getBudget();
     this.showResult();
     allInputs = document.querySelectorAll('input[type="text"]');
@@ -72,7 +73,7 @@ AppData.prototype.showResult = function() {
     budgetMonthVal.value = this.budgetMonth;
     expensesMonthVal.value = this.expensesMonth;
     addExpensesVal.value = this.addExpenses;
-    addIncomeVal.value = this.addIncome;
+    addIncomeVal.value = this.addIncome.join(', ');
     targetMonthVal.value = Math.ceil(this.getTargetMonth());
     incomePeriodVal.value = this.calcPeriod();
 
@@ -168,13 +169,18 @@ AppData.prototype.getIncome = function() {
 AppData.prototype.getAddExpenses = function() {
     let addExpenses = addExpensesItem.value.split(',');
     addExpenses = addExpenses.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ');
-    this.addExpenses = addExpenses.split(',')
+    this.addExpenses = addExpenses.split(',');
 };
-// AppData.prototype.getAddIncome = function() {
-//     let addIncome = addIncomeInputs.value.split(',');
-//     addIncome = addIncome.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ');
-//     this.addIncome = addIncome.split(',');
-// };
+AppData.prototype.getAddIncome = function() {
+    additionalIncomeItems.forEach((item) => {
+      let itemValue = item.value.split(',');
+      itemValue = itemValue.map(item => item.trim().charAt(0).toUpperCase() + item.trim().slice(1).toLowerCase()).join(', ');
+      itemValue = itemValue.split(',');
+      if (itemValue !== '') {
+        this.addIncome.push(itemValue);
+      }
+    });
+};
 AppData.prototype.changPeriod = function() {
     periodAmount.textContent = periodSelect.value;
 };
