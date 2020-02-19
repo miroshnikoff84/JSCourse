@@ -14,5 +14,4 @@ class Second extends First{
 }
 const two = new Second();
 
-
 two.hello();
