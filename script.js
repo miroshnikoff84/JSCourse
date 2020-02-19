@@ -12,6 +12,7 @@ class Second extends First{
         console.log('Я наследуемый метод!');
     }
 }
+
 const two = new Second();
 
 two.hello();
