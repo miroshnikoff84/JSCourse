@@ -15,9 +15,9 @@ function translate() {
     function useIf () {
         let lang = prompt('Выберите язык: ru или en. (используется if)');
 
-        if (lang == 'ru') {
+        if (lang === 'ru') {
             alert(ruLang);
-        }else if (lang == 'en') {
+        }else if (lang === 'en') {
             alert(enLang);
         }else{
         alert(error);
